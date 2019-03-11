@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <button id="get-users">Get all users</button>
+    <form id="get-user-byid">
+        <input type="text" placeholder="User's ID">
+        <button id="get-user">Get user by ID</button>
+    </form>
+    <form id="post-user">
+        <input class="name" type="text" placeholder="Name">
+        <input class="age" type="text" placeholder="Age">
+        <button id="post">Add user</button>
+    </form>
+    <form id="delete-user">
+        <input type="text" placeholder="User's ID">
+        <button id="delete">Delete user by ID</button>
+    </form>
+    <form id="update-user">
+        <input id="id" type="text" placeholder="User's ID" required> 
+        <input id="name" type="text" placeholder="Name">
+        <input id="age" type="text" placeholder="Age">
+       
+        <button id="put">Update user</button>
+    </form>
+    <ul class="display-result"></ul>
+      <script src="../module-js-10/js/index.js"></script>
+</body>
+</html>
