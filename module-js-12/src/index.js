@@ -5,7 +5,7 @@ const cardList = document.querySelector('.card-list')
 const input = document.querySelector('#input')
 const form = document.querySelector('.form')
 const button = document.querySelector('btn')
-const bbb = document.querySelector('.deleteNode')
+
 
 let linkArray = []
 
