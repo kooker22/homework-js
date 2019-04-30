@@ -1,16 +1,19 @@
 #cards {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 130px;
 }
 body {
     display: flex;
 }
 form {
     width: 25%;
+    position: fixed;
 }
 #element {
-    width: 30%;
-    margin: 20px;
+    width: auto;
+    margin: 10px;
+    
 }
 ul,li {
     list-style: none;

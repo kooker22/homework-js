@@ -93,7 +93,6 @@ const laptops = [
 ]
 
 const filter = { size: [], color: [], release_date: [] }
-
 const source = document.querySelector('#card').innerHTML.trim()
 const container = document.querySelector('#cards')
 const form = document.querySelector('form')
@@ -102,40 +101,63 @@ const temp = Handlebars.compile(source);
 const markup = laptops.reduce((acc,el) => acc + temp(el),"")
 container.innerHTML = markup;
 
-
-
 function resetCheckboxArray() {
   filter.color = [];
   filter.size = [];
   filter.release_date = [];
 }
 
-function getCheckedboxes (e) {
-  resetCheckboxArray()
-  e.preventDefault()
-  let checkboxes = document.querySelectorAll('input:checked')
-
-  let regSize = /\b\d{2}\b/
-  let regColor = /[white,gray,black]/g
-  let regDate = /\b\d{4}\b/
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked && checkboxes[i].value.match(regSize)) {
-      filter.size.push(checkboxes[i].value)
-    } else if (checkboxes[i].checked && checkboxes[i].value.match(regColor)) {
-      filter.color.push(checkboxes[i].value)
-    } else if (checkboxes[i].checked && checkboxes[i].value.match(regDate)) {
-      filter.release_date.push(checkboxes[i].value)
-    }
-  }
-}
-form.addEventListener('submit', getCheckedboxes)
-// form.addEventListener('submit',fi)
-
-function filteredArray() {
-  laptops.filter(el => el.includes())
-}
- 
-
+function filterArray(arr) {
+  let result;
   
-  
+ return result = arr
+    .filter(
+      el =>
+        filter.size.includes(String(el.size)) || filter.size.length === 0
+    )
+    .filter(
+      el =>
+        filter.color.includes(String(el.color)) || filter.color.length === 0
+    )
+    .filter(
+      el =>
+        filter.release_date.includes(String(el.release_date)) ||
+        filter.release_date.length === 0
+    );
+}
 
+function GetCheckboxes() {
+  let checkedBoxes = Array.from( document.querySelectorAll("input[type=checkbox]:checked"));
+  let arrayValues = checkedBoxes.forEach(el => filter[el.name].push(el.value));
+  //   let regSize = /\b\d{2}\b/
+  // let regColor = /[white,gray,black]/g
+  // let regDate = /\b\d{4}\b/
+  // for (let i = 0; i < checkboxes.length; i++) {
+  //   if (checkboxes[i].checked && checkboxes[i].value.match(regSize)) {
+  //     filter.size.push(checkboxes[i].value)
+  //   } else if (checkboxes[i].checked && checkboxes[i].value.match(regColor)) {
+  //     filter.color.push(checkboxes[i].value)
+  //   } else if (checkboxes[i].checked && checkboxes[i].value.match(regDate)) {
+  //     filter.release_date.push(checkboxes[i].value)
+  //   }
+  // }
+  filterArray(laptops);
+}
+
+form.addEventListener('submit',filterOutput);
+
+ function filterOutput(e){
+  resetCheckboxArray();
+  e.preventDefault();
+  GetCheckboxes();
+ newHTML(filterArray(laptops));
+ }
+
+        function newHTML(arr){
+   if(arr.length === 0){
+    filterArray([])
+     alert('Товара с такими характеристиками нет в наличии!');
+   }
+  const markupFilter = arr.reduce((acc,el) => acc + temp(el),"");
+  container.innerHTML = markupFilter;
+ }
