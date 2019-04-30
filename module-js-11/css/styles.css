@@ -1,0 +1,17 @@
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+body {
+    display: flex;
+}
+form {
+    width: 25%;
+}
+#element {
+    width: 30%;
+    margin: 20px;
+}
+ul,li {
+    list-style: none;
+}
