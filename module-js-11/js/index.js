@@ -161,3 +161,6 @@ form.addEventListener('submit',filterOutput);
   const markupFilter = arr.reduce((acc,el) => acc + temp(el),"");
   container.innerHTML = markupFilter;
  }
+  
+  
+
